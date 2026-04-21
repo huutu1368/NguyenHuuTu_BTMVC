@@ -1,0 +1,47 @@
+﻿@model IEnumerable<NguyenHuuTu_BTMVC.Models.LopHocPhan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.tenLop)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaoVien)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhoaHoc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tenLop)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaoVien.GiaoVienId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhoaHoc.KhoaHocId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LopHocPhanId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LopHocPhanId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LopHocPhanId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
