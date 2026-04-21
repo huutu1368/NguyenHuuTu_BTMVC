@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NguyenHuuTu_BTMVC.Models.GiaoVien>
+
+<div class="container mt-4">
+    <h2 class="text-primary">Danh sách Giáo viên</h2>
+    <p><a asp-action="Create" class="btn btn-success">Thêm giáo viên mới</a></p>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã GV</th>
+                <th>Tên Giáo Viên</th>
+                <th class="text-center">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.GiaoVienId</td>
+                    <td>@item.tenGV</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.GiaoVienId" class="btn btn-warning btn-sm">Sửa</a>
+                        <a asp-action="Delete" asp-route-id="@item.GiaoVienId" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Xóa giáo viên này?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
