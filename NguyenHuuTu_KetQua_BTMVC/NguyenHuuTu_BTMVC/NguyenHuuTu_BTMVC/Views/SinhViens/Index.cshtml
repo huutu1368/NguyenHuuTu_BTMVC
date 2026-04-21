@@ -1,0 +1,40 @@
+﻿@model IEnumerable<NguyenHuuTu_BTMVC.Models.SinhVien>
+
+@{
+    ViewData["Title"] = "Danh sách Sinh viên";
+}
+
+<div class="container mt-4">
+    <h2 class="text-primary">Danh sách Sinh viên</h2>
+
+    <p>
+        <a asp-action="Create" class="btn btn-success">Thêm sinh viên mới</a>
+    </p>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Mã SV</th>
+                <th>Tên Sinh Viên</th>
+                <th class="text-center">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.SinhVienId</td>
+                    <td>@item.tenSinhVien</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.SinhVienId" class="btn btn-warning btn-sm">Sửa</a>
+
+                        @* Nút xóa dùng onclick để xác nhận nhanh *@
+                        <a asp-action="Delete" asp-route-id="@item.SinhVienId"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Bạn có chắc muốn xóa sinh viên này?')">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
